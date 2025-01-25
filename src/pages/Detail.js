@@ -1,17 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetailProduct } from "../store/reducers/productReducer";
+import { addCart } from "../store/reducers/cartReducer";
 
 function Detail() {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const item = useSelector(state => state.product.detailProduct);
 
   useEffect(() => {
     dispatch(fetchDetailProduct(id));
   }, []);
+
+  const [size, setSize] = useState('');
+
+  const cart = () => {
+    if (size) {
+      dispatch(addCart({ product: item, size: size }));
+      navigate('/cart');
+    } else {
+      alert('사이즈를 선택해주세요!');
+    }
+  }
 
   return (
     <div className="detail">
@@ -24,12 +37,16 @@ function Detail() {
           <ul>
             {
               item?.size.map((val, idx) => (
-                <li key={idx}>{val}</li>
+                <li 
+                  key={idx}
+                  className={size === `${val}` ? 'on' : ''}
+                  onClick={() => setSize(val)}
+                >{val}</li>
               ))
             }
           </ul>
         </div>
-        <button type="button">장바구니</button>
+        <button type="button" onClick={cart}>장바구니</button>
       </div>
     </div>
   )

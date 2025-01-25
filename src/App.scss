@@ -292,6 +292,11 @@ $point-color: #EE2C3C;
                 cursor: pointer;
                 transition: .1s;
 
+                &.on {
+                  background-color: $main-color;
+                  color: #fff;
+                }
+
                 &:active {
                   background-color: $main-color;
                   color: #fff;
@@ -372,6 +377,11 @@ $point-color: #EE2C3C;
             cursor: pointer;
             transition: .1s;
 
+            &.on {
+              background-color: $main-color;
+              color: #fff;
+            }
+
             &:active {
               background-color: $main-color;
               color: #fff;
@@ -393,6 +403,94 @@ $point-color: #EE2C3C;
           color: #fff;
         }
       }
+    }
+  }
+
+  .cart {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+
+    .itemBox {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+
+      .item {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        border-bottom: 1px solid $main-color;
+
+        figure {
+          width: 40%;
+          cursor: pointer;
+        }
+
+        .info {
+          flex-basis: 80%;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          h3 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            word-break: keep-all;
+            cursor: pointer;
+          }
+
+          .size {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+          }
+
+          .price {
+            margin-top: 1rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+          }
+        }
+
+        .count {
+          flex-basis: 50%;
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          justify-content: flex-end;
+
+          p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+          }
+
+          button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-family: 'Noto Sans KR';
+            font-size: clamp(1rem , 2.5vw, 1.2rem)
+          }
+        }
+
+        & > button {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          font-family: "Noto Sans KR";
+          font-size: clamp(1.2rem, 2.5vw, 2rem);
+          color: $point-color;
+        }
+      }
+    }
+
+    .allPrice {
+      margin-top: 2rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 400;
     }
   }
 }

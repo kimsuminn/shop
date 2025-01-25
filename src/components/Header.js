@@ -38,7 +38,7 @@ function Header() {
     <header>
       <div className="header_inner">
         <div className="btn_box">
-          <button type="button">
+          <button type="button" onClick={() => navigate('/cart')}>
             <FontAwesomeIcon icon={faCartShopping} />
             <span>장바구니</span>
           </button>
