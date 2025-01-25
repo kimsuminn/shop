@@ -246,12 +246,17 @@ html button, html input, html label {
 }
 .App .product .item_box .item .info .text ul li {
   width: 24px;
-  background-color: #000000;
-  color: #fff;
+  border: 1px solid #000000;
+  background-color: transparent;
   text-align: center;
   padding: 0.25rem;
   font-size: 0.85rem;
   cursor: pointer;
+  transition: 0.1s;
+}
+.App .product .item_box .item .info .text ul li:active {
+  background-color: #000000;
+  color: #fff;
 }
 .App .product .item_box .item button {
   width: 100%;
@@ -261,6 +266,11 @@ html button, html input, html label {
   color: #EE2C3C;
   padding: 0.5rem;
   cursor: pointer;
+  transition: 0.1s;
+}
+.App .product .item_box .item button:active {
+  background-color: #EE2C3C;
+  color: #fff;
 }
 @media screen and (max-width: 1024px) {
   .App .product .item_box {
@@ -271,6 +281,64 @@ html button, html input, html label {
   .App .product .item_box {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+.App .detail {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.App .detail figure {
+  border: 1px solid #000000;
+  padding: 1rem;
+}
+.App .detail .info {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.App .detail .info .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.App .detail .info .text .size {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.App .detail .info .text ul {
+  display: flex;
+  gap: 0.5rem;
+}
+.App .detail .info .text ul li {
+  width: 36px;
+  border: 1px solid #000000;
+  background-color: transparent;
+  padding: 0.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.App .detail .info .text ul li:active {
+  background-color: #000000;
+  color: #fff;
+}
+.App .detail .info button {
+  border: 1px solid #EE2C3C;
+  background-color: transparent;
+  color: #EE2C3C;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.App .detail .info button:active {
+  background-color: #EE2C3C;
+  color: #fff;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -284,12 +284,18 @@ $point-color: #EE2C3C;
 
               li {
                 width: 24px;
-                background-color: $main-color;
-                color: #fff;
+                border: 1px solid $main-color;
+                background-color: transparent;
                 text-align: center;
                 padding: 0.25rem;
                 font-size: 0.85rem;
                 cursor: pointer;
+                transition: .1s;
+
+                &:active {
+                  background-color: $main-color;
+                  color: #fff;
+                }
               }
             }
           }
@@ -303,6 +309,12 @@ $point-color: #EE2C3C;
           color: $point-color;
           padding: 0.5rem;
           cursor: pointer;
+          transition: .1s;
+
+          &:active {
+            background-color: $point-color;
+            color: #fff;
+          }
         }
       }
 
@@ -312,6 +324,74 @@ $point-color: #EE2C3C;
 
       @media screen and (max-width: 600px) {
         grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+
+  .detail {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    figure {
+      border: 1px solid $main-color;
+      padding: 1rem;
+    }
+
+    .info {
+      flex-basis: 70%;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .size {
+          margin-top: 1rem;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+
+        ul {
+          display: flex;
+          gap: 0.5rem;
+
+          li {
+            width: 36px;
+            border: 1px solid $main-color;
+            background-color: transparent;
+            padding: 0.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: .1s;
+
+            &:active {
+              background-color: $main-color;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      button {
+        border: 1px solid $point-color;
+        background-color: transparent;
+        color: $point-color;
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: .1s;
+
+        &:active {
+          background-color: $point-color;
+          color: #fff;
+        }
       }
     }
   }

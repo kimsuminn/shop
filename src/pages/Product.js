@@ -1,24 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProducts } from "../store/reducers/productReducer";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Product() {
 
-  const dispatch = useDispatch();
   const productList = useSelector(state => state.product.allProducts);
-
-  useEffect(() => {
-    dispatch(fetchAllProducts());
-  }, [])
 
   return (
     <div className="product">
       <div className="item_box">
         {
-          productList?.map(item => (
-            <ItemList key={item.id} item={item} />
-          ))
+          productList.length > 0 ? 
+            productList?.map(item => (
+              <ItemList key={item.id} item={item} />
+            )) :
+            <p>검색 결과가 없습니다.</p>
         }
       </div>
     </div>
@@ -31,13 +26,13 @@ function ItemList({ item }) {
 
   return (
     <div className="item">
-      <div className="info" onClick={() => navigate(`/product/${item.id}`)}>
+      <div className="info">
         {
           item.new ? <p className="new">New</p> : <></>
         }
-        <figure><img src={item.img} alt={item.id} /></figure>
+        <figure onClick={() => navigate(`/product/${item.id}`)}><img src={item.img} alt={item.id} /></figure>
         <div className="text">
-          <h3>{item.title}</h3>
+          <h3 onClick={() => navigate(`/product/${item.id}`)}>{item.title}</h3>
           <p>{item.price.toLocaleString('ko-KR')}₩</p>
           <ul>
             {

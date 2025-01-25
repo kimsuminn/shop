@@ -14,11 +14,11 @@ function App() {
   const loginState = useSelector(state => state.login.status);
 
   const DetailPage = () => {
-    loginState ? <Detail /> : <Navigate to='/login' />
+    return loginState ? <Detail /> : <Navigate to='/login' />
   }
 
   const CartPage = () => {
-    loginState ? <Cart /> : <Navigate to='/login' />
+    return loginState ? <Cart /> : <Navigate to='/login' />
   }
 
   return (

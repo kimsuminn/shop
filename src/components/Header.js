@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faMagnifyingGlass, faRightToBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { logout } from "../store/reducers/loginReducer";
+import { useEffect, useState } from "react";
+import { fetchAllProducts } from "../store/reducers/productReducer";
 
 function Header() {
 
@@ -11,6 +13,26 @@ function Header() {
   const dispatch = useDispatch();
 
   const loginState = useSelector(state => state.login.status);
+
+  const [query] = useSearchParams();
+  const tabSearchParams = query.get('q') || '';
+
+  const [keyword, setKeyword] = useState('');
+  const search = (e) => {
+    e.preventDefault();
+
+    if (keyword.trim()) {
+      navigate(`?q=${keyword}`);
+      setKeyword('');
+    } else {
+      alert('검색어를 다시 입력해주세요.');
+      setKeyword('');
+    }
+  }
+
+  useEffect(() => {
+    dispatch(fetchAllProducts(tabSearchParams));
+  }, [tabSearchParams])
 
   return (
     <header>
@@ -37,14 +59,19 @@ function Header() {
         </h1>
         <div className="nav_bar">
           <ul className="nav">
-            <li><Link to='/'>All</Link></li>
-            <li><Link to='/'>New</Link></li>
-            <li><Link to='/'>Outer</Link></li>
-            <li><Link to='/'>Top</Link></li>
-            <li><Link to='/'>Bottom</Link></li>
+            <li className={tabSearchParams === '' ? 'on' : ''}><Link to='/'>All</Link></li>
+            <li className={tabSearchParams === 'new' ? 'on' : ''}><Link to='/?q=new'>New</Link></li>
+            <li className={tabSearchParams === 'outer' ? 'on' : ''}><Link to='/?q=outer'>Outer</Link></li>
+            <li className={tabSearchParams === 'top' ? 'on' : ''}><Link to='/?q=top'>Top</Link></li>
+            <li className={tabSearchParams === 'bottom' ? 'on' : ''}><Link to='/?q=bottom'>Bottom</Link></li>
           </ul>
-          <form className="search">
-            <input type="text" placeholder="제품명을 입력해주세요." />
+          <form className="search" onSubmit={search}>
+            <input 
+              type="text" 
+              placeholder="제품명을 입력해주세요." 
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
             <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
           </form>
         </div>

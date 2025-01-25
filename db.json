@@ -133,7 +133,7 @@
         "L",
         "XL"
       ],
-      "menu": "Top"
+      "menu": "Outer"
     },
     {
       "id": 9,
@@ -163,7 +163,7 @@
         "L",
         "XL"
       ],
-      "menu": "Top"
+      "menu": "Outer"
     },
     {
       "id": 11,
@@ -194,7 +194,7 @@
         "L",
         "XL"
       ],
-      "menu": "Top"
+      "menu": "Outer"
     },
     {
       "id": 13,
@@ -270,7 +270,7 @@
         "L",
         "XL"
       ],
-      "menu": "Top"
+      "menu": "Outer"
     }
   ]
 }
