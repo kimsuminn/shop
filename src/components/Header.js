@@ -66,9 +66,9 @@ function Header() {
             <li className={tabSearchParams === 'bottom' ? 'on' : ''}><Link to='/?q=bottom'>Bottom</Link></li>
           </ul>
           <form className="search" onSubmit={search}>
-            <input 
-              type="text" 
-              placeholder="제품명을 입력해주세요." 
+            <input
+              type="text"
+              placeholder="제품명을 입력해주세요."
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
             />

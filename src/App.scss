@@ -15,7 +15,8 @@ html {
     color: inherit;
   }
 
-  ul, ol {
+  ul,
+  ol {
     list-style: none;
   }
 
@@ -29,7 +30,9 @@ html {
     max-width: 100%;
   }
 
-  button, input, label {
+  button,
+  input,
+  label {
     display: block;
   }
 }
@@ -192,7 +195,8 @@ $point-color: #EE2C3C;
         padding: 3rem;
       }
 
-      .id, .pw {
+      .id,
+      .pw {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -426,6 +430,34 @@ $point-color: #EE2C3C;
         position: relative;
         border-bottom: 1px solid $main-color;
 
+        input {
+          position: absolute;
+          top: 1rem;
+          left: 0;
+          appearance: none;
+          border: 1px solid $main-color;
+          width: 1rem;
+          height: 1rem;
+          transition: .1s;
+          cursor: pointer;
+
+          &:checked {
+            background-color: $point-color;
+            border: 1px solid $point-color;
+
+            &::before {
+              content: '✓';
+              color: #fff;
+              font-size: 0.65rem;
+              font-weight: 600;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+
         figure {
           width: 40%;
           cursor: pointer;
@@ -469,14 +501,14 @@ $point-color: #EE2C3C;
             background-color: transparent;
             cursor: pointer;
             font-family: 'Noto Sans KR';
-            font-size: clamp(1rem , 2.5vw, 1.2rem)
+            font-size: clamp(1rem, 2.5vw, 1.2rem)
           }
         }
 
-        & > button {
+        &>button {
           position: absolute;
-          top: 1rem;
-          right: 1rem;
+          top: 0.5rem;
+          right: 0.5rem;
           border: none;
           background-color: transparent;
           cursor: pointer;
@@ -487,10 +519,36 @@ $point-color: #EE2C3C;
       }
     }
 
-    .allPrice {
+    .cartBtn {
       margin-top: 2rem;
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-      font-weight: 400;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+
+      .allPrice {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        font-weight: 400;
+      }
+
+      .btnBox {
+        display: flex;
+        gap: 0.25rem;
+
+        button {
+          border: 1px solid $point-color;
+          background-color: transparent;
+          color: $point-color;
+          padding: 0.25rem;
+          cursor: pointer;
+          transition: .1s;
+
+          &:active {
+            background-color: $point-color;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }

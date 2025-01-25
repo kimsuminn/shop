@@ -11,7 +11,7 @@ function Product() {
     <div className="product">
       <div className="item_box">
         {
-          productList.length > 0 ? 
+          productList.length > 0 ?
             productList?.map(item => (
               <ItemList key={item.id} item={item} />
             )) :
@@ -54,8 +54,8 @@ function ItemList({ item }) {
           <ul>
             {
               item.size.map((val, idx) => (
-                <li 
-                  key={idx} 
+                <li
+                  key={idx}
                   className={size === `${val}` ? 'on' : ''}
                   onClick={() => setSize(val)}
                 >{val}</li>

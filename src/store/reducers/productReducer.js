@@ -7,7 +7,7 @@ export const fetchAllProducts = createAsyncThunk(
     try {
       const response = await axios.get('https://my-json-server.typicode.com/kimsuminn/shop/products');
       if (query !== '') {
-        switch(query) {
+        switch (query) {
           case 'new':
             return response.data.filter(item => item.new);
           case 'outer':
@@ -50,12 +50,12 @@ const productReducer = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(fetchAllProducts.fulfilled, (state, action) => {
-      state.allProducts = action.payload;
-    })
-    .addCase(fetchDetailProduct.fulfilled, (state, action) => {
-      state.detailProduct = action.payload;
-    })
+      .addCase(fetchAllProducts.fulfilled, (state, action) => {
+        state.allProducts = action.payload;
+      })
+      .addCase(fetchDetailProduct.fulfilled, (state, action) => {
+        state.detailProduct = action.payload;
+      })
   }
 })
 

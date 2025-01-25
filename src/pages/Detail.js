@@ -37,7 +37,7 @@ function Detail() {
           <ul>
             {
               item?.size.map((val, idx) => (
-                <li 
+                <li
                   key={idx}
                   className={size === `${val}` ? 'on' : ''}
                   onClick={() => setSize(val)}
