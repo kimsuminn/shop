@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faMagnifyingGlass, faRightToBracket, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -11,8 +11,11 @@ function Header() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  const loginState = useSelector(state => state.login.status);
+  const isLogin = location.pathname === '/login';
+
+  const loginState = useSelector(state => state.login.loginState);
 
   const [query] = useSearchParams();
   const tabSearchParams = query.get('q') || '';
@@ -22,7 +25,7 @@ function Header() {
     e.preventDefault();
 
     if (keyword.trim()) {
-      navigate(`?q=${keyword}`);
+      navigate(`/?q=${keyword}`);
       setKeyword('');
     } else {
       alert('검색어를 다시 입력해주세요.');
@@ -57,9 +60,9 @@ function Header() {
         <h1 className="logo">
           <Link to='/'><img src="logo.png" alt="logo" /></Link>
         </h1>
-        <div className="nav_bar">
+        <div className="nav_bar" style={isLogin ? { display: 'none' } :{ }}>
           <ul className="nav">
-            <li className={tabSearchParams === '' ? 'on' : ''}><Link to='/'>All</Link></li>
+            <li className={location.pathname === '/' && tabSearchParams === '' ? 'on' : ''}><Link to='/'>All</Link></li>
             <li className={tabSearchParams === 'new' ? 'on' : ''}><Link to='/?q=new'>New</Link></li>
             <li className={tabSearchParams === 'outer' ? 'on' : ''}><Link to='/?q=outer'>Outer</Link></li>
             <li className={tabSearchParams === 'top' ? 'on' : ''}><Link to='/?q=top'>Top</Link></li>

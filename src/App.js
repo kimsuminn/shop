@@ -11,7 +11,7 @@ import './App.css';
 
 function App() {
 
-  const loginState = useSelector(state => state.login.status);
+  const loginState = useSelector(state => state.login.loginState);
 
   const DetailPage = () => {
     return loginState ? <Detail /> : <Navigate to='/login' />

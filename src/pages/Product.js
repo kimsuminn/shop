@@ -5,19 +5,23 @@ import { addCart } from "../store/reducers/cartReducer";
 
 function Product() {
 
-  const productList = useSelector(state => state.product.allProducts);
+  const {allProducts, allLoading} = useSelector(state => state.product);
 
   return (
     <div className="product">
-      <div className="item_box">
-        {
-          productList.length > 0 ?
-            productList?.map(item => (
-              <ItemList key={item.id} item={item} />
-            )) :
-            <p>검색 결과가 없습니다.</p>
-        }
-      </div>
+      {
+        allLoading ? 
+          <figure><img src="/loading.gif" alt="loading" /></figure> :
+          <div className="item_box">
+            {
+              allProducts.length > 0 ?
+                allProducts?.map(item => (
+                  <ItemList key={item.id} item={item} />
+                )) :
+                <p>검색 결과가 없습니다.</p>
+            }
+          </div>
+      }
     </div>
   )
 }
@@ -26,15 +30,15 @@ function ItemList({ item }) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginStatus = useSelector(state => state.login.status);
+  const loginState = useSelector(state => state.login.loginState);
 
   const [size, setSize] = useState('');
 
   const cart = () => {
-    if (size && loginStatus) {
+    if (size && loginState) {
       dispatch(addCart({ product: item, size: size }));
       navigate('/cart');
-    } else if (size && !loginStatus) {
+    } else if (size && !loginState) {
       navigate('/cart');
     } else {
       alert('사이즈를 선택해주세요!');

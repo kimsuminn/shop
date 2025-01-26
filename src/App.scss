@@ -229,6 +229,10 @@ $point-color: #EE2C3C;
   .product {
     width: 100%;
 
+    & > figure {
+      margin: 4rem auto;
+    }
+
     .item_box {
       width: 100%;
       max-width: 1600px;
@@ -339,72 +343,81 @@ $point-color: #EE2C3C;
 
   .detail {
     width: 100%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
 
-    figure {
-      border: 1px solid $main-color;
-      padding: 1rem;
+    & > figure {
+      margin: 4rem auto;
     }
+    
 
-    .info {
-      flex-basis: 70%;
+    .item {
+      width: 100%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem 1rem;
       display: flex;
-      flex-direction: column;
-      gap: 3rem;
-
-      .text {
+      justify-content: center;
+      gap: 2rem;
+  
+      figure {
+        border: 1px solid $main-color;
+        padding: 1rem;
+      }
+  
+      .info {
+        flex-basis: 70%;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-
-        .size {
-          margin-top: 1rem;
-          font-weight: 600;
-          font-size: 0.9rem;
-        }
-
-        ul {
+        gap: 3rem;
+  
+        .text {
           display: flex;
+          flex-direction: column;
           gap: 0.5rem;
-
-          li {
-            width: 36px;
-            border: 1px solid $main-color;
-            background-color: transparent;
-            padding: 0.25rem;
-            text-align: center;
-            cursor: pointer;
-            transition: .1s;
-
-            &.on {
-              background-color: $main-color;
-              color: #fff;
-            }
-
-            &:active {
-              background-color: $main-color;
-              color: #fff;
+  
+          .size {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+  
+          ul {
+            display: flex;
+            gap: 0.5rem;
+  
+            li {
+              width: 36px;
+              border: 1px solid $main-color;
+              background-color: transparent;
+              padding: 0.25rem;
+              text-align: center;
+              cursor: pointer;
+              transition: .1s;
+  
+              &.on {
+                background-color: $main-color;
+                color: #fff;
+              }
+  
+              &:active {
+                background-color: $main-color;
+                color: #fff;
+              }
             }
           }
         }
-      }
-
-      button {
-        border: 1px solid $point-color;
-        background-color: transparent;
-        color: $point-color;
-        padding: 0.5rem;
-        cursor: pointer;
-        transition: .1s;
-
-        &:active {
-          background-color: $point-color;
-          color: #fff;
+  
+        button {
+          border: 1px solid $point-color;
+          background-color: transparent;
+          color: $point-color;
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: .1s;
+  
+          &:active {
+            background-color: $point-color;
+            color: #fff;
+          }
         }
       }
     }
